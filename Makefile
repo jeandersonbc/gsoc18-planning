@@ -6,4 +6,4 @@ clean:
 	rm -f *.log *.aux
 
 pdf: clean
-	pdflatex $(MAIN).tex
+	latexmk -pdf $(MAIN).tex
