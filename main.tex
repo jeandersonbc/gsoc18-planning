@@ -1,8 +1,15 @@
-\documentclass[a4paper, 12pt, twocolumn]{article}
+\documentclass[a4paper]{article}
 
 \usepackage{color}
+\usepackage[hidelinks]{hyperref}
 \usepackage{url}
-\newcommand{\todo}[1]{\textbf{[[ TODO: }{\color{red} #1}\textbf{]]}}
+
+\newcommand{\todo}[1]{\textbf{[[ TODO: }{\color{blue} #1}\textbf{]]}}
+\newcommand{\fix}[1]{\textbf{[[ FIX: }{\color{red} #1}\textbf{]]}}
+\newcommand{\eg}{\emph{e.g.}}
+\newcommand{\ant}{Ant}
+\newcommand{\maven}{Maven}
+\newcommand{\gradle}{Gradle}
 
 \author{Jeanderson Barros Candido\\e-mail: \url{jeandersonbc@gmail.com}}
 \title{Modernizing Java Pathfinder Build Workflow}
@@ -12,21 +19,62 @@
 
 \maketitle
 
-\section*{Summary}
-\todo{summarize proposal and document}
-
 \section*{Introduction}
-\todo{motivate proposal}
 
-\section*{Proposal}
-\todo{describe proposal}
+Developers often performs recurrent tasks during the development process such
+as testing, managing external libraries, generating API documentation, and
+managing release artifacts.
+Build tools help to automate those error-prone and daunt tasks.
+Popular build tools usually provide a syntax to create configuration file
+that abstracts the commands to perform those tasks.
+In the Java community, \ant{} used to be a popular choice of builder but many
+projects have been replacing it to other modern builders.
+This proposal aims to modernize the build workflow from the Java Pathfinder
+(JPF) project.
+To achieve this goal, I propose a smooth transitioning process to use a modern
+build tool and a list of tasks and expectations to ensure the success by the
+end of the Google Summer of Code 2018.
+In the following, I summarize the structure of this proposal:
+Section~\ref{sec:motivation} highlights the issues with the current model and
+motivates the transition to a modern build tool, Section~\ref{sec:evaluation}
+evaluates how the alternatives performs in respect to the problems exposed on
+the previous section, and finally, Section~\ref{sec:plan} describes an
+execution plan (including tasks and scheduling) and a checklist to measure my
+performance during the program.
 
-\section*{Execution Plan}
-\todo{elaborate execution plan}
+\section{Motivation}
+\label{sec:motivation}
 
-\section*{Conclusion}
-\todo{end}
+\todo{Elaborate: Section~\ref{sec:motivation} highlights the issues with the
+current model and motivates the transition to a modern build tool}
 
+\section{Evaluation}
+\label{sec:evaluation}
+
+\todo{Elaborate: Section~\ref{sec:evaluation} evaluates how the alternatives
+performs in respect to the problems exposed on the previous section}
+
+\section{Execution Plan}
+\label{sec:plan}
+
+\todo{wip}
 \todo{it would be interesting to provide a checklist for mentors}
+
+\fix{Java Pathfinder (JPF) is an extensible model-checking framework for Java
+programs, and it is capable to verify properties (\eg{}, null dereference) by
+exploring multiple states of execution.
+JPF became a relevant tool, widely explored in the academia, due to its adaptive
+nature to different contexts.
+The JPF community often reuse core functionalities and extend JPF to support
+several types of analysis.}
+
+
+\fix{
+The goal of this project is to improve the JPF build system. Currently, JPF
+uses Ant, and this project includes changing the JPF build system to sbt. This
+also includes bringing the configuration mechanism of JPF under sbt. Currently,
+the configuration mechanism is part of the core of JPF, jpf-core. The goal is
+to make this functionally as part of the build system.
+}
 
 \end{document}
