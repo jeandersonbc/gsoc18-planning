@@ -1,4 +1,4 @@
-\documentclass[a4paper]{article}
+\documentclass[a4paper, 12pt]{article}
 
 \input{packages}
 \input{macros}
@@ -17,31 +17,81 @@ Developers often performs recurrent tasks during the development process such
 as testing, managing external libraries, generating API documentation, and
 managing release artifacts.
 Build tools help to automate those error-prone and daunt tasks.
-Popular build tools usually provide a syntax to create configuration file
-that abstracts the commands to perform those tasks.
+Popular build tools usually provide a syntax to create a script file that
+abstracts the commands to perform those tasks.
 In the Java community, \ant{} used to be a popular choice of builder but many
-projects have been replacing it to other modern builders.
-This proposal aims to modernize the build workflow from the Java Pathfinder
-(JPF) project.
+projects have been replacing it in favor of other modern builders.
+\textbf{This proposal aims to modernize the build workflow from the Java
+Pathfinder (JPF) project}.
 To achieve this goal, I propose a smooth transitioning process to use a modern
-build tool and a list of tasks and expectations to ensure the success by the
-end of the Google Summer of Code 2018.
-In the following, I summarize the structure of this proposal:
-Section~\ref{sec:motivation} highlights the issues with the current model and
-motivates the transition to a modern build tool, Section~\ref{sec:evaluation}
-evaluates how the alternatives performs in respect to the problems exposed on
-the previous section, and finally, Section~\ref{sec:plan} describes an
-execution plan (including tasks and scheduling) and a checklist to measure my
-performance during the program.
+build tool.
+This process consists in incrementally translating the existing \ant{} tasks
+and comparing the result (\ie, differential testing) to the \ant{} outcome.
+This proposal enumerates the tasks and sets the expectations to ensure
+successful collaboration by the end of the Google Summer of Code 2018 edition.
+% In the following, I summarize the structure of this proposal:
+% Section~\ref{sec:motivation} highlights the issues with the current model and
+% motivates the transition to a modern build tool, Section~\ref{sec:evaluation}
+% evaluates how the alternatives performs in respect to the problems exposed on
+% the previous section, and finally, Section~\ref{sec:plan} describes an
+% execution plan (including tasks and schedule) and a checklist to measure my
+% performance during the program.
 
 \section{Motivation}
 \label{sec:motivation}
 
-\todo{Elaborate: Section~\ref{sec:motivation} highlights the issues with the
-current model and motivates the transition to a modern build tool}
+\ant{} was released in 2000 and used to be a popular option to automate
+build processes in the Java community.
+However, with the release of more advanced builders, many Java projects have
+been replacing Ant by other alternatives (\eg, \gradle{} or \maven{}).
+This is understandable because \ant{} imposes some limitations that hinders the
+developer's productivity in sufficiently complex/large projects compared to
+those alternatives.
+In the following, I elaborate two major issues in the context of the JPF
+project.
+Note that this is not an exhaustive and comprehensive list of disadvantages of
+\ant{}.
+
+\begin{enumerate}
+
+\item \textbf{Lack of automatic dependency resolution.}
+In the Java universe, there are several frameworks and libraries for different
+purposes (\eg, testing and static analyzers) distributed as \emph{.jar} files.
+Developers often rely on those libraries to reuse important functionalities
+without reinventing the wheel.
+For instance, JPF uses JUnit to implement and execute unit tests.
+\ant{} requires the user to manually download and configure the desired
+dependencies.
+\ant{} is often integrated with \ivy{} as an complementary tool to handle
+external dependencies.
+On the other hand, \gradle{} and \maven{} (and other popular build tools)
+resolve declared dependencies automatically out-of-the-box.
+
+\item \textbf{Verbose script file.}
+\ant{} uses an XML-based script file to define tasks and their settings (\eg,
+classpath and output directory).
+Although XML is a widely disseminated format that requires little effort to
+understand and use, it often results in large and verbose files.
+In addition, \ant{} lacks convention over configuration.
+This means that one has to manually configure several properties (\eg,
+\emph{classpath}) on the script file.
+Those additional configurations contribute to the size of the script file.
+
+\end{enumerate}
+
+Many popular build tools provide features to address those issues.
+This project is relevant because the current JPF build workflow has error-prone
+processes may introduce barriers to newcomers willing to contribute on the JPF
+community.
 
 \section{Evaluation}
 \label{sec:evaluation}
+
+There are several build tools available in the Java community (notably,
+\maven{} and \gradle{}).
+Which one best fits JPF's needs?
+This section compares \maven{}, \gradle{}, and \sbt{}.
+
 
 \todo{Elaborate: Section~\ref{sec:evaluation} evaluates how the alternatives
 performs in respect to the problems exposed on the previous section}
@@ -51,22 +101,5 @@ performs in respect to the problems exposed on the previous section}
 
 \todo{wip}
 \todo{it would be interesting to provide a checklist for mentors}
-
-\fix{Java Pathfinder (JPF) is an extensible model-checking framework for Java
-programs, and it is capable to verify properties (\eg{}, null dereference) by
-exploring multiple states of execution.
-JPF became a relevant tool, widely explored in the academia, due to its adaptive
-nature to different contexts.
-The JPF community often reuse core functionalities and extend JPF to support
-several types of analysis.}
-
-
-\fix{
-The goal of this project is to improve the JPF build system. Currently, JPF
-uses Ant, and this project includes changing the JPF build system to sbt. This
-also includes bringing the configuration mechanism of JPF under sbt. Currently,
-the configuration mechanism is part of the core of JPF, jpf-core. The goal is
-to make this functionally as part of the build system.
-}
 
 \end{document}
