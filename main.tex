@@ -40,10 +40,11 @@ successful collaboration by the end of the Google Summer of Code 2018 edition.
 \section{Motivation}
 \label{sec:motivation}
 
-\ant{} was released in 2000 and used to be a popular option to automate
+\ant{}\cite{page:ant} was released in 2000 and used to be a popular option to automate
 build processes in the Java community.
 However, with the release of more advanced builders, many Java projects have
-been replacing Ant by other alternatives (\eg, \gradle{} or \maven{}).
+been replacing Ant by other alternatives (\eg, \gradle{}\cite{page:gradle} or
+\maven{}\cite{page:maven}).
 This is understandable because \ant{} imposes some limitations that hinders the
 developer's productivity in sufficiently complex/large projects compared to
 those alternatives.
@@ -62,8 +63,8 @@ without reinventing the wheel.
 For instance, JPF uses JUnit to implement and execute unit tests.
 \ant{} requires the user to manually download and configure the desired
 dependencies.
-\ant{} is often integrated with \ivy{} as an complementary tool to handle
-external dependencies.
+\ant{} is often integrated with \ivy{}\cite{page:ivy} as an complementary
+tool to handle external dependencies.
 On the other hand, \gradle{} and \maven{} (and other popular build tools)
 resolve declared dependencies automatically out-of-the-box.
 
@@ -90,7 +91,7 @@ community.
 There are several build tools available in the Java community (notably,
 \maven{} and \gradle{}).
 Which one best fits JPF's needs?
-This section compares \maven{}, \gradle{}, and \sbt{}.
+This section compares \maven{}, \gradle{}, and \sbt{}\cite{page:sbt}.
 
 
 \todo{Elaborate: Section~\ref{sec:evaluation} evaluates how the alternatives
@@ -101,5 +102,8 @@ performs in respect to the problems exposed on the previous section}
 
 \todo{wip}
 \todo{it would be interesting to provide a checklist for mentors}
+
+\bibliographystyle{plain}
+\bibliography{references}
 
 \end{document}
