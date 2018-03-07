@@ -70,13 +70,14 @@ resolve declared dependencies automatically out-of-the-box.
 
 \item \textbf{Verbose script file.}
 \ant{} uses an XML-based script file to define tasks and their settings (\eg,
-classpath and output directory).
+\emph{classpath} and output directory).
 Although XML is a widely disseminated format that requires little effort to
 understand and use, it often results in large and verbose files.
 In addition, \ant{} lacks convention over configuration.
 This means that one has to manually configure several properties (\eg,
 \emph{classpath}) on the script file.
-Those additional configurations contribute to the size of the script file.
+Those additional configurations and the open/closing XML tags contribute to the
+size of the script file.
 
 \end{enumerate}
 
@@ -88,20 +89,31 @@ community.
 \section{Evaluation}
 \label{sec:evaluation}
 
-There are several build tools available in the Java community (notably,
-\maven{} and \gradle{}).
+There are several build tools available in the Java community.
+\maven{} and \gradle{} are two mainstreams build tools popular in Android and
+web development.
+The most notable difference between them is the fact that \gradle{} uses a
+Groovy-like DSL instead of XML.
+\sbt{}\cite{page:sbt} is based on Scala and was suggested in the GSOC idea's
+list\cite{page:jpf-gsoc18}.
 Which one best fits JPF's needs?
-This section compares \maven{}, \gradle{}, and \sbt{}\cite{page:sbt}.
+To answer this question, \todo{what do I want to evaluate?}
 
+%%  The \emph{usability} dimension evaluates how to implement basic functionalities
+%%  (\eg, testing, compilation) and how to manage dependencies on each build tool.
+%%  This is important to the maintenance and evolution of the script files.
 
-\todo{Elaborate: Section~\ref{sec:evaluation} evaluates how the alternatives
-performs in respect to the problems exposed on the previous section}
+%%  The \emph{popularity} dimension evaluates the engagement and maturity of the
+%%  community.
+%%  It is common to use Q\&A forums like StackOverflow\cite{page:stackoverflow} to
+%%  find solutions to eventual problems and to learn how to perform some particular
+%%  task ask questions and discover how to perform some task 
 
 \section{Execution Plan}
 \label{sec:plan}
 
 \todo{wip}
-\todo{it would be interesting to provide a checklist for mentors}
+\todo{it would be interesting to provide a checklist to mentors}
 
 \bibliographystyle{plain}
 \bibliography{references}
