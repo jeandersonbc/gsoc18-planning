@@ -13,6 +13,7 @@
 
 \section*{Introduction}
 
+\todo{must focus on Gradle}
 Developers often performs recurrent tasks during the development process such
 as testing, managing external libraries, generating API documentation, and
 managing release artifacts.
@@ -73,9 +74,10 @@ resolve declared dependencies automatically out-of-the-box.
 \emph{classpath} and output directory).
 Although XML is a widely disseminated format that requires little effort to
 understand and use, it often results in large and verbose files.
-In addition, \ant{} lacks convention over configuration.
+\fix{In addition, \ant{} lacks convention over configuration.
 This means that one has to manually configure several properties (\eg,
-\emph{classpath}) on the script file.
+\emph{classpath}) on the script file}\todo{$\leftarrow$ this must go with a
+new item}.
 Those additional configurations and the open/closing XML tags contribute to the
 size of the script file.
 
@@ -88,6 +90,8 @@ community.
 
 \section{Evaluation}
 \label{sec:evaluation}
+
+\todo{focus on Gradle!}
 
 There are several build tools available in the Java community.
 \maven{} and \gradle{} are two mainstreams build tools popular in Android and
