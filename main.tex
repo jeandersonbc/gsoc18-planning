@@ -4,16 +4,18 @@
 \input{macros}
 
 \author{Jeanderson Barros Candido\\e-mail: \url{jeandersonbc@gmail.com}}
-\title{Modernizing Java Pathfinder Build Workflow}
+
+\title{Modernizing the Java Pathfinder Build Workflow: Migrating from \ant{} to
+\gradle{}}
+
 \date{\today}
 
 \begin{document}
 
 \maketitle
 
-\section*{Introduction}
+\section*{Summary}
 
-\todo{must focus on Gradle}
 Developers often performs recurrent tasks during the development process such
 as testing, managing external libraries, generating API documentation, and
 managing release artifacts.
@@ -22,10 +24,10 @@ Popular build tools usually provide a syntax to create a script file that
 abstracts the commands to perform those tasks.
 In the Java community, \ant{} used to be a popular choice of builder but many
 projects have been replacing it in favor of other modern builders.
-\textbf{This proposal aims to modernize the build workflow from the Java
+\emph{This proposal aims to modernize the build workflow from the Java
 Pathfinder (JPF) project}.
-To achieve this goal, I propose a smooth transitioning process to use a modern
-build tool.
+To achieve this goal, I propose a smooth transitioning process to use
+\gradle{}, a modern general purpose build tool.
 This process consists in incrementally translating the existing \ant{} tasks
 and comparing the result (\ie, differential testing) to the \ant{} outcome.
 This proposal enumerates the tasks and sets the expectations to ensure
@@ -38,11 +40,11 @@ successful collaboration by the end of the Google Summer of Code 2018 edition.
 % execution plan (including tasks and schedule) and a checklist to measure my
 % performance during the program.
 
-\section{Motivation}
-\label{sec:motivation}
+\section{Introduction}
+\label{sec:intro}
 
-\ant{}\cite{page:ant} was released in 2000 and used to be a popular option to automate
-build processes in the Java community.
+\ant{}\cite{page:ant} was released in 2000 and used to be a popular option to
+automate build processes in the Java community.
 However, with the release of more advanced builders, many Java projects have
 been replacing Ant by other alternatives (\eg, \gradle{}\cite{page:gradle} or
 \maven{}\cite{page:maven}).
@@ -69,17 +71,24 @@ tool to handle external dependencies.
 On the other hand, \gradle{} and \maven{} (and other popular build tools)
 resolve declared dependencies automatically out-of-the-box.
 
-\item \textbf{Verbose script file.}
+\item \textbf{Large and verbose script file.}
 \ant{} uses an XML-based script file to define tasks and their settings (\eg,
 \emph{classpath} and output directory).
+XML is a widely disseminated format and requires little effort to understand
+and use.
+However, in the context of automating a build workflow, XML has some drawbacks.
+XML tags are often long names.
+In particular, \ant{} tasks may contain several attributes and nested
+elements to describe additional properties.
+For sufficiently large projects, it is challenging to maintain and evolve the
+build process due to the quickly growth and the verbosity of the build script.
+
+\item textbf{\fix{xxx}}
 Although XML is a widely disseminated format that requires little effort to
 understand and use, it often results in large and verbose files.
 \fix{In addition, \ant{} lacks convention over configuration.
 This means that one has to manually configure several properties (\eg,
-\emph{classpath}) on the script file}\todo{$\leftarrow$ this must go with a
-new item}.
-Those additional configurations and the open/closing XML tags contribute to the
-size of the script file.
+\emph{classpath}) on the script file}
 
 \end{enumerate}
 
@@ -87,11 +96,6 @@ Many popular build tools provide features to address those issues.
 This project is relevant because the current JPF build workflow has error-prone
 processes may introduce barriers to newcomers willing to contribute on the JPF
 community.
-
-\section{Evaluation}
-\label{sec:evaluation}
-
-\todo{focus on Gradle!}
 
 There are several build tools available in the Java community.
 \maven{} and \gradle{} are two mainstreams build tools popular in Android and
