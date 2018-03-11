@@ -22,23 +22,16 @@ managing release artifacts.
 Build tools help to automate those error-prone and daunt tasks.
 Popular build tools usually provide a syntax to create a script file that
 abstracts the commands to perform those tasks.
-In the Java community, \ant{} used to be a popular choice of builder but many
+In the Java community, \ant{} used to be a popular choice but many
 projects have been replacing it in favor of other modern builders.
 \emph{This proposal aims to modernize the build workflow from the Java
 Pathfinder (JPF) project}.
 To achieve this goal, I propose a smooth transitioning process to use
-\gradle{}, a modern general purpose build tool.
-This process consists in incrementally translating the existing \ant{} tasks
-and comparing the result (\ie, differential testing) to the \ant{} outcome.
+\gradle{}.
+\gradle{} is a general purpose build system and uses Groovy, a JVM language, to
+create and implement flexible and highly customizable build workflows.
 This proposal enumerates the tasks and sets the expectations to ensure
 successful collaboration by the end of the Google Summer of Code 2018 edition.
-% In the following, I summarize the structure of this proposal:
-% Section~\ref{sec:motivation} highlights the issues with the current model and
-% motivates the transition to a modern build tool, Section~\ref{sec:evaluation}
-% evaluates how the alternatives performs in respect to the problems exposed on
-% the previous section, and finally, Section~\ref{sec:plan} describes an
-% execution plan (including tasks and schedule) and a checklist to measure my
-% performance during the program.
 
 \section{Introduction}
 \label{sec:intro}
@@ -48,9 +41,8 @@ automate build processes in the Java community.
 However, with the release of more advanced builders, many Java projects have
 been replacing Ant by other alternatives (\eg, \gradle{}\cite{page:gradle} or
 \maven{}\cite{page:maven}).
-This is understandable because \ant{} imposes some limitations that hinders the
-developer's productivity in sufficiently complex/large projects compared to
-those alternatives.
+This is understandable because \ant{} has drawbacks that hinder developer's
+productivity for sufficiently complex and large projects.
 In the following, I elaborate two major issues in the context of the JPF
 project.
 Note that this is not an exhaustive and comprehensive list of disadvantages of
@@ -60,7 +52,7 @@ Note that this is not an exhaustive and comprehensive list of disadvantages of
 
 \item \textbf{Lack of automatic dependency resolution.}
 In the Java universe, there are several frameworks and libraries for different
-purposes (\eg, testing and static analyzers) distributed as \emph{.jar} files.
+purposes (\eg, testing and static analysis) distributed as \jar{} files.
 Developers often rely on those libraries to reuse important functionalities
 without reinventing the wheel.
 For instance, JPF uses JUnit to implement and execute unit tests.
@@ -72,50 +64,67 @@ On the other hand, \gradle{} and \maven{} (and other popular build tools)
 resolve declared dependencies automatically out-of-the-box.
 
 \item \textbf{Large and verbose script file.}
-\ant{} uses an XML-based script file to define tasks and their settings (\eg,
-\emph{classpath} and output directory).
+\ant{} uses XML to define tasks\footnote{To not confuse, this is not the same
+as \ant{} tasks. In the context of \ant{}, build tasks are known as
+\emph{targets} while commands (\eg, javac) are known as \emph{task}} (\eg,
+compile code) and their settings (\eg, \emph{classpath} and output directory).
 XML is a widely disseminated format and requires little effort to understand
 and use.
-However, in the context of automating a build workflow, XML has some drawbacks.
+However, in the context of build automation, XML has some drawbacks.
 XML tags are often long names.
-In particular, \ant{} tasks may contain several attributes and nested
+In particular, \ant{} \emph{targets} may contain several attributes and nested
 elements to describe additional properties.
 For sufficiently large projects, it is challenging to maintain and evolve the
 build process due to the quickly growth and the verbosity of the build script.
 
-\item textbf{\fix{xxx}}
-Although XML is a widely disseminated format that requires little effort to
-understand and use, it often results in large and verbose files.
-\fix{In addition, \ant{} lacks convention over configuration.
-This means that one has to manually configure several properties (\eg,
-\emph{classpath}) on the script file}
-
 \end{enumerate}
 
 Many popular build tools provide features to address those issues.
-This project is relevant because the current JPF build workflow has error-prone
-processes may introduce barriers to newcomers willing to contribute on the JPF
-community.
+This proposal is relevant because the current JPF build workflow has error-prone
+processes that may introduce barriers to newcomers willing to be part of the
+JPF community.
+\todo{next section describes the tasks and the appendix elaborates how I decide
+to choose gradle}
+
+\section{Evaluating Build Tools}
+\label{sec:eval}
+
+\fix{move evaluation and results to an appendix. this proposal already assumes
+Gradle and the mentor what's to know what I'm going to do in this project. the
+curious reader may want to refer to the appendix if she wants to know how I
+came up with \gradle{}}
 
 There are several build tools available in the Java community.
 \maven{} and \gradle{} are two mainstreams build tools popular in Android and
 web development.
-The most notable difference between them is the fact that \gradle{} uses a
-Groovy-like DSL instead of XML.
-\sbt{}\cite{page:sbt} is based on Scala and was suggested in the GSOC idea's
-list\cite{page:jpf-gsoc18}.
-Which one best fits JPF's needs?
-To answer this question, \todo{what do I want to evaluate?}
+\sbt{}\cite{page:sbt} is another build tool that is becoming popular, and it
+was suggested in the GSOC idea's list\cite{page:jpf-gsoc18}.
+Which one fits better to JPF's needs?
+To answer this question, I evaluated \maven{}, \gradle{}, and \sbt{} in respect
+to the following aspects:
 
-%%  The \emph{usability} dimension evaluates how to implement basic functionalities
-%%  (\eg, testing, compilation) and how to manage dependencies on each build tool.
-%%  This is important to the maintenance and evolution of the script files.
+\begin{enumerate}
+\item \emph{How dependencies are managed?} Configuring paths and \jar{}
+files manually can be error-prone. Ideally, the build tool would take care of
+paths and dependency versions automatically.
+\item \emph{How brief and powerful is the build script format?} XML syntax may
+lead to overly verbose and large files for sufficiently large projects.
+Ideally, the chosen build tool offers a friendly and brief syntax and provides
+an easy way to create user-defined tasks.
+\item \emph{How popular is this build tool?} It is important to choose a tool
+with a large community on Q\&A forums and well written documentation to make
+the adoption process smoother to the JPF community.
+\item \emph{What makes this tool unique compared to the others?} This question
+highlights features that may provide advantages in favor of this particular
+build tool.
+\end{enumerate}
 
-%%  The \emph{popularity} dimension evaluates the engagement and maturity of the
-%%  community.
-%%  It is common to use Q\&A forums like StackOverflow\cite{page:stackoverflow} to
-%%  find solutions to eventual problems and to learn how to perform some particular
-%%  task ask questions and discover how to perform some task 
+\subsection{Results}
+\label{sec:results}
+
+\todo{not only describe like in XML in JSON, but actually specify how tasks can be performed with actual code.}
+\todo{plugin mechanism to implement low-level functionalities and use}
+\todo{highlight that build scripts are code}
 
 \section{Execution Plan}
 \label{sec:plan}
