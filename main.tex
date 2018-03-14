@@ -1,4 +1,4 @@
-\documentclass[a4paper, 12pt]{article}
+\documentclass[a4paper]{article}
 
 \input{packages}
 \input{macros}
@@ -80,19 +80,30 @@ build process due to the quickly growth and the verbosity of the build script.
 \end{enumerate}
 
 Many popular build tools provide features to address those issues.
-This proposal is relevant because the current JPF build workflow has error-prone
-processes that may introduce barriers to newcomers willing to be part of the
-JPF community.
-\todo{next section describes the tasks and the appendix elaborates how I decide
-to choose gradle}
+This proposal focuses on migrating from \ant{} to \gradle{}, and it is relevant
+because the current JPF build workflow has error-prone processes that may
+introduce barriers to newcomers willing to be part of the JPF community.
+For further details on how and why I decided to migrate to \gradle{}, please,
+refer to the Appendix~\ref{sec:eval}.
 
-\section{Evaluating Build Tools}
+\section{Implementation Plan}
+\label{sec:plan}
+\todo{check this link
+\url{https://google.github.io/gsocguides/student/proposal-example-2}}
+
+\section{Deliverables}
+\label{sec:deliv}
+\todo{...}
+
+\section{Timeline}
+\label{sec:time}
+\todo{...}
+
+\clearpage
+\begin{appendices}
+
+\section{Build Tools Evaluation}
 \label{sec:eval}
-
-\fix{move evaluation and results to an appendix. this proposal already assumes
-Gradle and the mentor what's to know what I'm going to do in this project. the
-curious reader may want to refer to the appendix if she wants to know how I
-came up with \gradle{}}
 
 There are several build tools available in the Java community.
 \maven{} and \gradle{} are two mainstreams build tools popular in Android and
@@ -126,12 +137,9 @@ build tool.
 \todo{plugin mechanism to implement low-level functionalities and use}
 \todo{highlight that build scripts are code}
 
-\section{Execution Plan}
-\label{sec:plan}
+\end{appendices}
 
-\todo{wip}
-\todo{it would be interesting to provide a checklist to mentors}
-
+\clearpage
 \bibliographystyle{plain}
 \bibliography{references}
 
