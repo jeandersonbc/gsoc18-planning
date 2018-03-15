@@ -14,6 +14,7 @@
 
 \section*{Summary}
 
+\noindent
 Developers often performs recurrent tasks during the development process such
 as testing, managing external libraries, generating API documentation, and
 managing release artifacts.
@@ -130,9 +131,10 @@ refer to the Appendix~\ref{sec:eval}.
 \event{Jul/06 - Jul/14}{Code submission and final evaluation}
 
 \clearpage
-\begin{appendices}
 
-\section{Build Tools Evaluation}
+\appendix
+\section{Appendix}
+\subsection{Build Tools Evaluation}
 \label{sec:eval}
 
 There are several build tools available in the Java community.
@@ -157,11 +159,11 @@ tool with a large community on Q\&A forums and well written documentation to
 make the adoption process smoother to the JPF community.
 \end{itemize}
 
-\subsection*{Results}
+\subsubsection*{Results}
 \label{sec:results}
 
-\subsubsection*{Answering Q1}
-\maven{} is an older build tool compared to \gradle{} and \ant{}.
+\begin{itemize}
+\item \emph{Answering Q1:}
 One of the features introduced by \maven{} was the automatic management of
 external dependencies.
 By default, \maven{} fetches \jar{} files from the Maven Central
@@ -170,16 +172,24 @@ In addition, \maven{} allows access to other repositories\cite{page:mvnrepo}
 with minor configuration.
 Not surprisingly, \gradle{} and \sbt{} not only adopted this feature but
 \emph{are also compatible} with \maven{} repositories.
+Therefore, \textbf{all options are tied in this question}.
 
-\begin{description}
-\item[Conclusion:] All options are \emph{tied} in this question.
-\end{description}
-
-\todo{not only describe like in XML in JSON, but actually specify how tasks can be performed with actual code.}
+\item \emph{Answering Q2:}
+\todo{not only describe like in XML in JSON, but actually specify how tasks can
+be performed with actual code.}
 \todo{plugin mechanism to implement low-level functionalities and use}
 \todo{highlight that build scripts are code}
+Therefore, \textbf{\sbt{} (Scala-based) and \gradle{} (Groovy-based) are both
+valid options}.
 
-\end{appendices}
+\item \emph{Answering Q3:}
+\todo{...}
+Therefore, \textbf{\maven{} and \gradle{} \emph{win} in terms of maturity and
+popularity}.
+\end{itemize}
+
+\subsubsection*{Conclusion}
+From the results, \todo{...}
 
 \clearpage
 \bibliographystyle{plain}
