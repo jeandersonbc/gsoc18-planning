@@ -146,24 +146,36 @@ Which one fits better to JPF's needs?
 To answer this question, I evaluated \maven{}, \gradle{}, and \sbt{} in respect
 to the following aspects:
 
-\begin{enumerate}
-\item \emph{How dependencies are managed?} Configuring paths and \jar{}
+\begin{itemize}
+\item \emph{Q1. How dependencies are managed?} Configuring paths and \jar{}
 files manually can be error-prone. Ideally, the build tool would take care of
 paths and dependency versions automatically.
-\item \emph{How brief and powerful is the build script format?} XML syntax may
-lead to overly verbose and large files for sufficiently large projects.
+\item \emph{Q2. How brief and powerful is the build script format?} XML syntax
+may lead to overly verbose and large files for sufficiently large projects.
 Ideally, the chosen build tool offers a friendly and brief syntax and provides
 an easy way to create user-defined tasks.
-\item \emph{How popular is this build tool?} It is important to choose a tool
-with a large community on Q\&A forums and well written documentation to make
-the adoption process smoother to the JPF community.
-\item \emph{What makes this tool unique compared to the others?} This question
-highlights features that may provide advantages in favor of this particular
-build tool.
-\end{enumerate}
+\item \emph{Q3. How popular is this build tool?} It is important to choose a
+tool with a large community on Q\&A forums and well written documentation to
+make the adoption process smoother to the JPF community.
+\end{itemize}
 
-\subsection{Results}
+\subsection*{Results}
 \label{sec:results}
+
+\subsubsection*{Answering Q1}
+\maven{} is an older build tool compared to \gradle{} and \ant{}.
+One of the features introduced by \maven{} was the automatic management of
+external dependencies.
+By default, \maven{} fetches \jar{} files from the Maven Central
+Repository\cite{page:mvncentral} and keep them in a local repository.
+In addition, \maven{} allows access to other repositories\cite{page:mvnrepo}
+with minor configuration.
+Not surprisingly, \gradle{} and \sbt{} not only adopted this feature but
+\emph{are also compatible} with \maven{} repositories.
+
+\begin{description}
+\item[Conclusion:] All options are \emph{tied} in this question.
+\end{description}
 
 \todo{not only describe like in XML in JSON, but actually specify how tasks can be performed with actual code.}
 \todo{plugin mechanism to implement low-level functionalities and use}
