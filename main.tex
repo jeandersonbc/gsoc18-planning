@@ -138,8 +138,8 @@ refer to the Appendix~\ref{sec:eval}.
 \label{sec:eval}
 
 There are several build tools available in the Java community.
-\maven{} and \gradle{} are two mainstreams build tools popular in Android and
-web development.
+\maven{} and \gradle{} are two mainstream tools popular in Android and web
+development.
 \sbt{}\cite{page:sbt} is another build tool that is becoming popular, and it
 was suggested in the GSOC idea's list\cite{page:jpf-gsoc18}.
 Which one fits better to JPF's needs?
@@ -167,7 +167,7 @@ make the adoption process smoother to the JPF community.
 One of the features introduced by \maven{} was the automatic management of
 external dependencies.
 By default, \maven{} fetches \jar{} files from the Maven Central
-Repository\cite{page:mvncentral} and keep them in a local repository.
+Repository\cite{page:mvncentral} and keep them locally.
 In addition, \maven{} allows access to other repositories\cite{page:mvnrepo}
 with minor configuration.
 Not surprisingly, \gradle{} and \sbt{} not only adopted this feature but
@@ -198,7 +198,14 @@ In addition, Scala features interoperability with Java.
 \sbt{} is a promising tool but it is relatively recent.
 The first stable release is from February 9\textsuperscript{th},
 2018\cite{page:sbt-release}.
-\todo{Gradle...}
+\gradle{} combines the best of both alternatives and some other features.
+For instance, it features incremental building, a daemon to speedup future
+executions, and also a convenient \emph{wrapper}
+mechanism\cite{page:gradle-wrapper} for reproducible builds.
+\textbf{For these reasons, \gradle{} seems to be a better fit for the context
+of JPF.}
+Note that this evaluation is a sanity check and does not meant to be
+generalized to all contexts.
 
 \clearpage
 \bibliographystyle{plain}
