@@ -1,0 +1,17 @@
+digraph G {
+"-init" -> {};
+"compile" -> {"-init" "-compile-annotations" "-compile-main" "-compile-peers" "-compile-classes" "-compile-tests" "-compile-examples"};
+"-compile-annotations" -> {};
+"-compile-main" -> {};
+"-compile-peers" -> {"-compile-main"};
+"-compile-classes" -> {"-compile-annotations" "-compile-main"};
+"-compile-tests" -> {"-compile-annotations" "-compile-main"};
+"-compile-examples" -> {"-compile-annotations" "-compile-main"};
+"build" -> {"compile" "-jar-jvm" "-jar-jpf" "-jar-annotations"};
+"-jar-jvm" -> {};
+"-jar-jpf" -> {};
+"-jar-annotations" -> {};
+"dist" -> {};
+"clean" -> {};
+"test" -> {"build"};
+}
