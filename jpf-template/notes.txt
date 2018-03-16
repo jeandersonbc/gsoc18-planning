@@ -1,0 +1,6 @@
+jpf-template is basically a scaffolding project
+It bootstraps a new jpf project.
+
+Things to note:
+- it hardcodes ignore files (mercurial)
+- it adds IDE-dependent config file (e.g., eclipse, netbeans...)
