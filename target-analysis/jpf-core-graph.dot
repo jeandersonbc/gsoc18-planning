@@ -1,5 +1,5 @@
 digraph G {
-graph [ratio="compress", resolution=300, size="2!"];
+graph [ratio="compress", resolution=100, size="1.3,4.7!", margin=0];
 node [shape=rect]
 "-init" -> {};
 "compile" -> {"-init" "-compile-annotations" "-compile-main" "-compile-peers" "-compile-classes" "-compile-tests" "-compile-examples"};

@@ -31,7 +31,7 @@ for target in root.iter("target"):
         pass
     tasks.append(Task(name, dependencies))
 
-graphiz_options = ["graph [ratio=\"compress\", resolution=300, size=\"2!\"]",
+graphiz_options = ["graph [ratio=\"compress\", resolution=100, size=\"1.3,4.7!\", margin=0]",
                    "node [shape=rect]"]
 
 with open(output, "w") as f:
