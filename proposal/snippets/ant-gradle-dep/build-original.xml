@@ -2,9 +2,12 @@
   <target name="init">
     <echo>Running init task</echo>
   </target>
+
+  <!-- to be removed from this file -->
   <target name="compile" depends="init">
     <echo>Running compile task</echo>
   </target>
+
   <target name="dist" depends="compile">
     <echo>Running dist task</echo>
   </target>

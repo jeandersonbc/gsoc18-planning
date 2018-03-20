@@ -109,20 +109,16 @@ file and the user can invoke the \texttt{hello} target as a \gradle{} task.
 
 \begin{figure}[h!]
     \centering
-    \begin{subfigure}[b]{0.48\textwidth}
-        \lstinputlisting{snippets/ant-gradle-integration/build.xml}
-        \caption{\texttt{build.xml} file}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \lstinputlisting[title=\texttt{build.xml},language=XML]{snippets/ant-gradle-integration/build.xml}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.48\textwidth}
-        \lstinputlisting{snippets/ant-gradle-integration/console.txt}
-        \caption{Console output}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \lstinputlisting[title=Console output]{snippets/ant-gradle-integration/console.txt}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.45\textwidth}
-        \vspace{3mm}
-        \lstinputlisting{snippets/ant-gradle-integration/build.gradle}
-        \caption{\texttt{build.gradle} file}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \lstinputlisting[title=\texttt{build.gradle},language=Python]{snippets/ant-gradle-integration/build.gradle}
     \end{subfigure}
     \caption{Demonstration of \ant{} integration with
     \gradle{}.\label{fig:gradle-ant-support}}
@@ -139,9 +135,19 @@ As we can see, critical paths involve mostly the compilation steps and must
 be a priority since they represent the longer paths on the build workflow.
 My strategy is to migrate each \ant{} target until the new build script
 supports all original targets as \gradle{} tasks.
-This is feasible because \gradle{} interchangeably handles \ant{} targets and \gradle{} tasks.
-\todo{figure illustrating this...}.
-\todo{description}.
+This is feasible because \gradle{} interchangeably handles \ant{} targets and
+\gradle{} tasks.
+Figure~\ref{fig:gradle-ant-dep} demonstrates the migration of a \ant{} target
+to a \gradle{} task.
+The \texttt{compile} target, originally on the \texttt{build.xml} file depends
+on the \texttt{init} target and itself is a dependency to the \texttt{dist}
+target.
+After the migration, the \texttt{build.gradle} script imports the
+\texttt{build.xml} and implements the \texttt{compile} task.
+The new \gradle{} script performs the full build workflow despite being
+incomplete.
+This feature ensures that \ant{} and \gradle{} can coexist during the migration
+process.
 
 \begin{figure}[h!]
     \centering
@@ -159,10 +165,24 @@ This is feasible because \gradle{} interchangeably handles \ant{} targets and \g
     \caption{\ant{} targets represented as directed acyclic graphs. The edges
     represent dependencies where the \emph{tail node} depends on the completion
     of the \emph{head node}.\label{fig:tasks}}
-    ~
     {\scriptsize Source: the author.}
 \end{figure}
 
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \lstinputlisting[title=\texttt{build.xml},language=XML]{snippets/ant-gradle-dep/build-original.xml}
+        \caption{Before migration}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \lstinputlisting[title=\texttt{build.xml},language=XML]{snippets/ant-gradle-dep/build.xml}%
+        \lstinputlisting[title=\texttt{build.gradle},language=python]{snippets/ant-gradle-dep/build.gradle}
+        \caption{After migration}
+    \end{subfigure}
+    \caption{\ant{} and \gradle{} interoperability.\label{fig:gradle-ant-dep}}
+    {\scriptsize Source: the author.}
+\end{figure}
 
 \section{Timeline}
 \label{sec:time}
