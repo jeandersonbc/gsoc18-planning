@@ -31,8 +31,12 @@ for target in root.iter("target"):
         pass
     tasks.append(Task(name, dependencies))
 
+graphiz_options = ["graph [ratio=\"compress\", resolution=300, size=\"2!\"]",
+                   "node [shape=rect]"]
+
 with open(output, "w") as f:
     f.write("digraph G {\n")
+    f.write("%s\n" % ";\n".join(graphiz_options))
     for t in tasks:
         deps = " ".join(["\"%s\"" % d for d in t.dependencies])
         f.write("\"%s\" -> {%s};\n" % (t.name, deps))
