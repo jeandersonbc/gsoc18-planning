@@ -1,0 +1,7 @@
+ant.importBuild "build.xml"
+
+task compile(dependsOn: "init") {
+    doLast {
+        println "Running compile task"
+    }
+}

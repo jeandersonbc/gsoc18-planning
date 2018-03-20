@@ -1,0 +1,11 @@
+<project default="dist">
+  <target name="init">
+    <echo>Running init task</echo>
+  </target>
+  <target name="compile" depends="init">
+    <echo>Running compile task</echo>
+  </target>
+  <target name="dist" depends="compile">
+    <echo>Running dist task</echo>
+  </target>
+</project>
