@@ -32,7 +32,7 @@ create and implement flexible and highly customizable build workflows.
 This proposal enumerates the tasks and sets the expectations to ensure
 successful collaboration by the end of the Google Summer of Code 2018 edition.
 
-\section{Introduction}
+\section{Outline}
 \label{sec:intro}
 
 \ant{}\cite{page:ant} was released in 2000 and used to be a popular option to
@@ -85,28 +85,89 @@ introduce barriers to newcomers willing to be part of the JPF community.
 For further details on how and why I decided to migrate to \gradle{}, please,
 refer to the Appendix~\ref{sec:eval}.
 
-\section{Implementation Plan}
-\label{sec:plan}
-
-\fix{what am I going to do?}
-\todo{check this link
-\url{https://google.github.io/gsocguides/student/proposal-example-2}}
-
 \section{Deliverables}
 \label{sec:deliv}
 
 \begin{itemize}
-\item Gradle support on the \texttt{jpf-core} module;
-\item Gradle support on the \texttt{jpf-symbc} extension module;
+\item Gradle support on the \jpfcore{} module;
+\item Gradle support on the \jpfsymbc{} extension module;
 \item Updated version of the \texttt{jpf-template} auxiliary tool; 
 \item Updated documentation related to the build process from the mentioned
 projects;
-\item Continuous integration support (TravisCI\cite{page:travis}) on the GitHub
-main repository.
 \end{itemize}
+
+\section{Strategy}
+\label{sec:plan}
+
+The main strategy to succeed with this proposal is to have a working \gradle{}
+build since the beginning.
+This is possible due to the interoperability of \ant{} withing a \gradle{}
+execution~\cite{page:gradle-ant-support}.
+Figure~\ref{fig:gradle-ant-support} demonstrates this feature with a simple
+example: the \texttt{build.gradle} script imports a simple \texttt{build.xml}
+file and the user can invoke the \texttt{hello} target as a \gradle{} task.
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \lstinputlisting{snippets/ant-gradle-integration/build.xml}
+        \caption{\texttt{build.xml} file}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \lstinputlisting{snippets/ant-gradle-integration/console.txt}
+        \caption{Console output}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \vspace{3mm}
+        \lstinputlisting{snippets/ant-gradle-integration/build.gradle}
+        \caption{\texttt{build.gradle} file}
+    \end{subfigure}
+    \caption{Demonstration of \ant{} integration with
+    \gradle{}.\label{fig:gradle-ant-support}}
+    {\scriptsize Source: the author.}
+\end{figure}
+
+For this proposal, is not sufficient to only import the existing build script. 
+The JPF core (\jpfcore) and Symbolic PathFinder (\jpfsymbc) modules have many
+tasks and dependencies that could be simplified with a simpler and verifiable
+syntax.
+Figure~\ref{fig:tasks} illustrates the existing \ant{} targets and their
+dependencies.
+As we can see, critical paths involve mostly the compilation steps and must
+be a priority since they represent the longer paths on the build workflow.
+My strategy is to migrate each \ant{} target until the new build script
+supports all original targets as \gradle{} tasks.
+This is feasible because \gradle{} interchangeably handles \ant{} targets and \gradle{} tasks.
+\todo{figure illustrating this...}.
+\todo{description}.
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=.9\textwidth]{figs/jpf-tasks.pdf}%
+        \caption{\jpfcore{}}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figs/symbc-tasks.pdf}%
+        \caption{\jpfsymbc{}}
+    \end{subfigure}
+    \caption{\ant{} targets represented as directed acyclic graphs. The edges
+    represent dependencies where the \emph{tail node} depends on the completion
+    of the \emph{head node}.\label{fig:tasks}}
+    ~
+    {\scriptsize Source: the author.}
+\end{figure}
+
 
 \section{Timeline}
 \label{sec:time}
+
+\fix{Missing tasks and constraints}
 
 \subsection*{Community Bonding}
 \event{Apr/23 - Apr/27}{\todo{...}}

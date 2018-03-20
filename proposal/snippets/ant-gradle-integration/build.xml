@@ -1,0 +1,5 @@
+<project>
+  <target name="foo">
+    <echo>Running from Ant</echo>
+  </target>
+</project>

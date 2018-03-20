@@ -1,0 +1,6 @@
+$ gradle foo
+:foo
+[ant:echo] Running from Ant
+
+BUILD SUCCESSFUL in 0s
+1 actionable task: 1 executed
