@@ -1,6 +1,5 @@
 *.aux
 *.log
-*.pdf
 *.dvi
 *.fdb_latexmk
 *.fls
@@ -9,4 +8,5 @@
 *.blg
 *.swp
 
+main.pdf
 .DS_Store
