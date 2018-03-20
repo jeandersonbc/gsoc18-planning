@@ -15,7 +15,7 @@
 \section*{Summary}
 
 \noindent
-Developers often performs recurrent tasks during the development process such
+Developers often perform recurrent tasks during the development process such
 as testing, managing external libraries, generating API documentation, and
 managing release artifacts.
 Build tools help to automate those error-prone and daunt tasks.
@@ -38,7 +38,7 @@ successful collaboration by the end of the Google Summer of Code 2018 edition.
 \ant{}\cite{page:ant} was released in 2000 and used to be a popular option to
 automate build processes in the Java community.
 However, with the release of more advanced builders, many Java projects have
-been replacing Ant by other alternatives (\eg, \gradle{}\cite{page:gradle} or
+been replacing Ant with other alternatives (\eg, \gradle{}\cite{page:gradle} or
 \maven{}\cite{page:maven}).
 This is understandable because \ant{} has drawbacks that hinder developer's
 productivity for sufficiently complex and large projects.
@@ -57,7 +57,7 @@ without reinventing the wheel.
 For instance, JPF uses JUnit to implement and execute unit tests.
 \ant{} requires the user to manually download and configure the desired
 dependencies.
-\ant{} is often integrated with \ivy{}\cite{page:ivy} as an complementary
+\ant{} is often integrated with \ivy{}\cite{page:ivy} as a complementary
 tool to handle external dependencies.
 On the other hand, \gradle{} and \maven{} (and other popular build tools)
 resolve declared dependencies automatically out-of-the-box.
@@ -74,7 +74,7 @@ XML tags are often long names.
 In particular, \ant{} \emph{targets} may contain several attributes and nested
 elements to describe additional properties.
 For sufficiently large projects, it is challenging to maintain and evolve the
-build process due to the quickly growth and the verbosity of the build script.
+build process due to the quick growth and the verbosity of the build script.
 
 \end{enumerate}
 
@@ -137,7 +137,7 @@ My strategy is to migrate each \ant{} target until the new build script
 supports all original targets as \gradle{} tasks.
 This is feasible because \gradle{} interchangeably handles \ant{} targets and
 \gradle{} tasks.
-Figure~\ref{fig:gradle-ant-dep} demonstrates the migration of a \ant{} target
+Figure~\ref{fig:gradle-ant-dep} demonstrates the migration of an \ant{} target
 to a \gradle{} task.
 The \texttt{compile} target, originally on the \texttt{build.xml} file depends
 on the \texttt{init} target and itself is a dependency to the \texttt{dist}
@@ -234,7 +234,7 @@ To answer this question, I evaluated \maven{}, \gradle{}, and \sbt{} in respect
 to the following aspects:
 
 \begin{itemize}
-\item \emph{Q1. How dependencies are managed?} Configuring paths and \jar{}
+\item \emph{Q1. How are dependencies managed?} Configuring paths and \jar{}
 files manually can be error-prone. Ideally, the build tool would take care of
 paths and dependency versions automatically.
 \item \emph{Q2. How brief and powerful is the build script format?} XML syntax
@@ -262,7 +262,7 @@ Therefore, \textbf{all options are tied in this question}.
 \item \emph{Answering Q2:}
 In this aspect, \maven{} inherits drawbacks from \ant{} since it is also based
 on XML.
-The major difference of \gradle{} and \sbt{} is the fact that their scripts not
+The major difference between \gradle{} and \sbt{} is the fact that their scripts not
 only \emph{describe} the build process but also allow to specify \emph{how}
 tasks can be performed.
 Build scripts are actual code.
@@ -288,7 +288,7 @@ The first stable release is from February 9\textsuperscript{th},
 including features like incremental building, a daemon for efficient
 execution\cite{page:gradle-daemon}, and also a convenient \emph{wrapper}
 mechanism\cite{page:gradle-wrapper} for reproducible builds.
-One of the most important \gradle{} features that supports directly this
+One of the most important \gradle{} features that support directly this
 proposal is the interoperability with \ant{} build
 scripts\cite{page:gradle-ant-support}\footnote{Section~\ref{sec:plan}
 elaborates how this feature is used in this proposal}.
@@ -296,7 +296,7 @@ elaborates how this feature is used in this proposal}.
 of JPF.}
 A list of useful links and snippets to demonstrate some \gradle{} basics are
 available on GitHub\cite{page:gradle-labs} for further reference. 
-Note that this evaluation is a sanity check and does not meant to be
+Note that this evaluation is a sanity check and does not intend to be
 generalized to all contexts in Java development.
 
 \clearpage
