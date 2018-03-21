@@ -19,19 +19,21 @@ as testing, managing external libraries, generating API documentation, and
 managing release artifacts.
 Build tools help to automate those error-prone and daunt tasks with scripts
 that abstracts those tasks.
-\emph{This proposal aims to modernize the build workflow from the Java
-PathFinder (JPF) project} by migrating from \ant{} to \gradle{}.
+This proposal aims to modernize the build workflow from the Java PathFinder
+(JPF) project by migrating from \ant{} to \gradle{}.
 \gradle{} is a general purpose build system and uses Groovy, a JVM language, to
 create and implement flexible and highly customizable build workflows.
 To achieve this goal, my strategy is to have a working \gradle{} build
 coexisting with the current \ant{} script.
 \ant{} targets will migrate to \gradle{} tasks in a incremental and
 iterative process.
+By the end of the program, it expected to have the \gradle{} support fully
+integrated into to main repository.
 
 \section{Outline}
 \label{sec:intro}
 
-The JPF project currently uses \ant{} to automate the build workflow.
+The JPF project currently uses \ant{} to automate the build process.
 Unfortunately, \ant{} has drawbacks that hinder developer's productivity for
 sufficiently complex and large projects.
 In the context of the JPF project, there are two major issues:
@@ -42,13 +44,13 @@ In the context of the JPF project, there are two major issues:
 The user needs to manually download and configure dependencies.
 \ant{} is often integrated with \ivy{}\cite{page:ivy} as a complementary
 tool to handle external dependencies.
-On the other hand, \gradle{}\cite{page:gradle} and \maven{}\cite{page:maven}
-(and other popular build tools) resolve declared dependencies automatically
+On the other hand, \gradle{}\cite{page:gradle}, \maven{}\cite{page:maven},
+and other popular build tools resolve declared dependencies automatically
 out-of-the-box.
 
 \item \textbf{Large and verbose script file.}
 XML has some drawbacks in the context of build automation.
-Tags are often long names, and, in particular, \ant{} \emph{targets} may
+Tags are often long names, and, in particular, \ant{} targets may
 contain several attributes and nested elements to describe additional
 properties.
 For sufficiently large projects, it is challenging to maintain and evolve the
@@ -57,9 +59,9 @@ build process due to the quick growth and the verbosity of the build script.
 \end{enumerate}
 
 Many popular build tools provide features to address those issues.
-This proposal focuses on migrating from \ant{} to \gradle{}, and it is relevant
-because the current JPF build workflow has error-prone processes that may
-introduce barriers to newcomers willing to be part of the JPF community.
+This proposal focuses on migrating from \ant{} to \gradle{}; it is relevant
+because the current build workflow may introduce barriers for maintenance and
+to newcomers.
 For further details on how and why I decided to migrate to \gradle{}, please,
 refer to the Appendix~\ref{sec:eval}.
 
@@ -127,27 +129,31 @@ incomplete.
 This feature ensures that \ant{} and \gradle{} can coexist during the migration
 process.
 
-\begin{figure}[h!]
+\clearpage
+
+\begin{figure}[t!]
     \centering
-    \begin{subfigure}[b]{0.75\textwidth}
+    \begin{subfigure}[b]{\textwidth}
         \centering
-        \includegraphics[width=.9\textwidth]{figs/jpf-tasks.pdf}%
+        \includegraphics[scale=2.45]{figs/jpf-tasks.pdf}%
         \caption{\jpfcore{}}
     \end{subfigure}
-    \qquad
-    \begin{subfigure}[b]{0.8\textwidth}
-        \vspace{5mm}
+    \begin{subfigure}[b]{\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{figs/symbc-tasks.pdf}%
+        \vspace{1.1cm}
+        \includegraphics[scale=2.9]{figs/symbc-tasks.pdf}%
         \caption{\jpfsymbc{}}
     \end{subfigure}
+    \vspace{5mm}
     \caption{\ant{} targets represented as directed acyclic graphs. The edges
     represent dependencies where the \emph{tail node} depends on the completion
     of the \emph{head node}.\label{fig:tasks}}
     {\scriptsize Source: the author.}
 \end{figure}
 
-\begin{figure}[h!]
+\clearpage
+
+\begin{figure}[t!]
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
         \lstinputlisting[title=\texttt{build.xml},language=XML]{snippets/ant-gradle-dep/build-original.xml}
@@ -241,9 +247,9 @@ Therefore, \textbf{all options are tied in this question}.
 \item \emph{Answering Q2:}
 In this aspect, \maven{} inherits drawbacks from \ant{} since it is also based
 on XML.
-The major difference between \gradle{} and \sbt{} is the fact that their scripts not
+\fix{The major difference between \gradle{} and \sbt{} is the fact that their scripts not
 only \emph{describe} the build process but also allow to specify \emph{how}
-tasks can be performed.
+tasks can be performed.}
 Build scripts are actual code.
 In the case of \sbt{} and \gradle{}, both are compatible with Java API.
 This feature opens many possibilities and conveniences to create custom build
