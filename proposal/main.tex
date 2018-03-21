@@ -35,44 +35,26 @@ successful collaboration by the end of the Google Summer of Code 2018 edition.
 \section{Outline}
 \label{sec:intro}
 
-\ant{}\cite{page:ant} was released in 2000 and used to be a popular option to
-automate build processes in the Java community.
-However, with the release of more advanced builders, many Java projects have
-been replacing Ant with other alternatives (\eg, \gradle{}\cite{page:gradle} or
-\maven{}\cite{page:maven}).
-This is understandable because \ant{} has drawbacks that hinder developer's
-productivity for sufficiently complex and large projects.
-In the following, I elaborate two major issues in the context of the JPF
-project.
-Note that this is not an exhaustive and comprehensive list of disadvantages of
-\ant{}.
+The JPF project currently uses \ant{} to automate the build workflow.
+Unfortunately, \ant{} has drawbacks that hinder developer's productivity for
+sufficiently complex and large projects.
+In the context of the JPF project, there are two major issues:
 
 \begin{enumerate}
 
 \item \textbf{Lack of automatic dependency resolution.}
-In the Java universe, there are several frameworks and libraries for different
-purposes (\eg, testing and static analysis) distributed as \jar{} files.
-Developers often rely on those libraries to reuse important functionalities
-without reinventing the wheel.
-For instance, JPF uses JUnit to implement and execute unit tests.
-\ant{} requires the user to manually download and configure the desired
-dependencies.
+The user needs to manually download and configure dependencies.
 \ant{} is often integrated with \ivy{}\cite{page:ivy} as a complementary
 tool to handle external dependencies.
-On the other hand, \gradle{} and \maven{} (and other popular build tools)
-resolve declared dependencies automatically out-of-the-box.
+On the other hand, \gradle{}\cite{page:gradle} and \maven{}\cite{page:maven}
+(and other popular build tools) resolve declared dependencies automatically
+out-of-the-box.
 
 \item \textbf{Large and verbose script file.}
-\ant{} uses XML to define tasks\footnote{To not confuse, this is not the same
-as \ant{} tasks. In the context of \ant{}, build tasks are known as
-\emph{targets} while commands (\eg, javac) are known as \emph{tasks}.} (\eg,
-compile code) and their settings (\eg, \emph{classpath} and output directory).
-XML is a widely disseminated format and requires little effort to understand
-and use.
-However, in the context of build automation, XML has some drawbacks.
-XML tags are often long names.
-In particular, \ant{} \emph{targets} may contain several attributes and nested
-elements to describe additional properties.
+XML has some drawbacks in the context of build automation.
+Tags are often long names, and, in particular, \ant{} \emph{targets} may
+contain several attributes and nested elements to describe additional
+properties.
 For sufficiently large projects, it is challenging to maintain and evolve the
 build process due to the quick growth and the verbosity of the build script.
 
