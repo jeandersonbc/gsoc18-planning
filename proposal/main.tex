@@ -14,23 +14,19 @@
 
 \section{Summary}
 
-\noindent
 Developers often perform recurrent tasks during the development process such
 as testing, managing external libraries, generating API documentation, and
 managing release artifacts.
-Build tools help to automate those error-prone and daunt tasks.
-Popular build tools usually provide a syntax to create a script file that
-abstracts the commands to perform those tasks.
-In the Java community, \ant{} used to be a popular choice but many
-projects have been replacing it in favor of other modern builders.
+Build tools help to automate those error-prone and daunt tasks with scripts
+that abstracts those tasks.
 \emph{This proposal aims to modernize the build workflow from the Java
-PathFinder (JPF) project}.
-To achieve this goal, I propose a smooth transitioning process to use
-\gradle{}.
+PathFinder (JPF) project} by migrating from \ant{} to \gradle{}.
 \gradle{} is a general purpose build system and uses Groovy, a JVM language, to
 create and implement flexible and highly customizable build workflows.
-This proposal enumerates the tasks and sets the expectations to ensure
-successful collaboration by the end of the Google Summer of Code 2018 edition.
+To achieve this goal, my strategy is to have a working \gradle{} build
+coexisting with the current \ant{} script.
+\ant{} targets will migrate to \gradle{} tasks in a incremental and
+iterative process.
 
 \section{Outline}
 \label{sec:intro}
