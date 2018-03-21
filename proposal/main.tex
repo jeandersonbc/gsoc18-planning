@@ -85,7 +85,7 @@ This is possible due to the interoperability of \ant{} withing a \gradle{}
 execution~\cite{page:gradle-ant-support}.
 Figure~\ref{fig:gradle-ant-support} demonstrates this feature with a simple
 example: the \texttt{build.gradle} script imports a simple \texttt{build.xml}
-file and the user can invoke the \texttt{hello} target as a \gradle{} task.
+file and the user can invoke the \texttt{foo} target as a \gradle{} task.
 
 \begin{figure}[h!]
     \centering
@@ -117,11 +117,10 @@ My strategy is to migrate each \ant{} target until the new build script
 supports all original targets as \gradle{} tasks.
 This is feasible because \gradle{} interchangeably handles \ant{} targets and
 \gradle{} tasks.
-Figure~\ref{fig:gradle-ant-dep} demonstrates the migration of an \ant{} target
-to a \gradle{} task.
-The \texttt{compile} target, originally on the \texttt{build.xml} file depends
-on the \texttt{init} target and itself is a dependency to the \texttt{dist}
-target.
+Figure~\ref{fig:gradle-ant-dep} demonstrates the migration from \ant{} to
+\gradle{}.
+The \texttt{compile} target, originally on the \texttt{build.xml} file, depends
+on the \texttt{init} target and it is a dependency to the \texttt{dist} target.
 After the migration, the \texttt{build.gradle} script imports the
 \texttt{build.xml} and implements the \texttt{compile} task.
 The new \gradle{} script performs the full build workflow despite being
