@@ -71,9 +71,9 @@ refer to the Appendix~\ref{sec:eval}.
 \begin{itemize}
 \item Gradle support on the \jpfcore{} module;
 \item Gradle support on the \jpfsymbc{} extension module;
-\item Updated version of the \texttt{jpf-template} auxiliary tool; 
+\item Updated version of the \jpftemplate{} auxiliary tool;
 \item Updated documentation related to the build process from the mentioned
-projects;
+projects.
 \end{itemize}
 
 \section{Strategy}
@@ -86,24 +86,6 @@ execution~\cite{page:gradle-ant-support}.
 Figure~\ref{fig:gradle-ant-support} demonstrates this feature with a simple
 example: the \texttt{build.gradle} script imports a simple \texttt{build.xml}
 file and the user can invoke the \texttt{foo} target as a \gradle{} task.
-
-\begin{figure}[h!]
-    \centering
-    \begin{subfigure}[b]{0.4\textwidth}
-        \lstinputlisting[title=\texttt{build.xml},language=XML]{snippets/ant-gradle-integration/build.xml}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.4\textwidth}
-        \lstinputlisting[title=Console output]{snippets/ant-gradle-integration/console.txt}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.4\textwidth}
-        \lstinputlisting[title=\texttt{build.gradle},language=Python]{snippets/ant-gradle-integration/build.gradle}
-    \end{subfigure}
-    \caption{Demonstration of \ant{} integration with
-    \gradle{}.\label{fig:gradle-ant-support}}
-    {\scriptsize Source: the author.}
-\end{figure}
 
 For this proposal, is not sufficient to only import the existing build script. 
 The JPF core (\jpfcore) and Symbolic PathFinder (\jpfsymbc) modules have many
@@ -128,6 +110,25 @@ incomplete.
 This feature ensures that \ant{} and \gradle{} can coexist during the migration
 process.
 
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \lstinputlisting[title=\texttt{build.xml},language=XML]{snippets/ant-gradle-integration/build.xml}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.4\textwidth}
+        \lstinputlisting[title=Console output]{snippets/ant-gradle-integration/console.txt}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.4\textwidth}
+        \lstinputlisting[title=\texttt{build.gradle},language=Python]{snippets/ant-gradle-integration/build.gradle}
+    \end{subfigure}
+    \caption{Demonstration of \ant{} integration with
+    \gradle{}.\label{fig:gradle-ant-support}}
+    {\scriptsize Source: the author.}
+\end{figure}
+
+
 \clearpage
 
 \begin{figure}[t!]
@@ -135,13 +136,13 @@ process.
     \begin{subfigure}[b]{\textwidth}
         \centering
         \includegraphics[scale=2.45]{figs/jpf-tasks.pdf}%
-        \caption{\jpfcore{}}
+        \caption{\jpfcore{}\label{fig:tasks:jpf}}
     \end{subfigure}
     \begin{subfigure}[b]{\textwidth}
         \centering
         \vspace{1.1cm}
         \includegraphics[scale=2.9]{figs/symbc-tasks.pdf}%
-        \caption{\jpfsymbc{}}
+        \caption{\jpfsymbc{}\label{fig:tasks:symbc}}
     \end{subfigure}
     \vspace{5mm}
     \caption{\ant{} targets represented as directed acyclic graphs. The edges
