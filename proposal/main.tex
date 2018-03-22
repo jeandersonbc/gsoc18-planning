@@ -14,21 +14,21 @@
 
 \section{Summary}
 
-Developers often perform recurrent tasks during the development process such
-as testing, managing external libraries, generating API documentation, and
+Developers often perform recurrent tasks during the development process such as
+testing, managing external libraries, generating API documentation, and
 managing release artifacts.
 Build tools help to automate those error-prone and daunt tasks with scripts
 that abstracts those tasks.
 This proposal aims to modernize the build workflow from the Java PathFinder
 (JPF) project by migrating from \ant{} to \gradle{}.
 \gradle{} is a general purpose build system and uses Groovy, a JVM language, to
-create and implement flexible and highly customizable build workflows.
+create flexible and highly customizable build workflows.
 To achieve this goal, my strategy is to have a working \gradle{} build
 coexisting with the current \ant{} script.
-\ant{} targets will migrate to \gradle{} tasks in a incremental and
-iterative process.
-By the end of the program, it expected to have the \gradle{} support fully
-integrated into to main repository.
+\ant{} targets will migrate to \gradle{} tasks in an incremental and iterative
+process.
+By the end of the program, is expected to have the \gradle{} support fully
+integrated into the main repository.
 
 \section{Outline}
 \label{sec:intro}
