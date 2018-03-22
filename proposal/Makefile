@@ -1,6 +1,6 @@
 # Make Manual: https://www.gnu.org/software/make/manual/make.html
 
-.DEFAULT_GOAL := pdf
+.DEFAULT_GOAL := final
 
 MAIN := main
 
@@ -9,3 +9,6 @@ clean:
 
 pdf: clean
 	latexmk -pdf $(MAIN).tex
+
+final: pdf
+	pdffonts $(MAIN).pdf
