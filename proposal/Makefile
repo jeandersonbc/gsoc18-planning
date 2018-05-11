@@ -5,7 +5,7 @@
 MAIN := main
 
 clean:
-	latexmk -C && rm *.bbl
+	latexmk -C && rm -f *.bbl
 
 pdf: clean
 	latexmk -pdf $(MAIN).tex
