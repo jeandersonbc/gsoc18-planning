@@ -20,7 +20,7 @@ To compile the `.tex` files, you will need a TeX/LaTeX engine and `make` to use 
 Run `make` in the current directory to produce the final output.
 There are some other secondary files for notes and analysis.
 
-## Prosoal Info and Other Links 
+## Proposal Info and Other Links 
 
 * Mentor Organization:
   * [The Java Pathfinder Team](https://github.com/javapathfinder/)
