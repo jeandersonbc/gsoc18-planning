@@ -1,5 +1,8 @@
 # Google Summer of Code 2018
 
+> Update 23 Aug 2022: This repo is no longer private and it's a public archive.
+> Feel free to see the [report](main.pdf) that I originally used as my proposal.
+
 * [Proposal Approved :white_check_mark:](https://summerofcode.withgoogle.com/projects/#4588925163667456)
 * Feel free to **leave a star** and **fork** this repository if you find it useful :smile:
 
